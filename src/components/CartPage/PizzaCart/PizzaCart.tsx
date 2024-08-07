@@ -1,15 +1,14 @@
-import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Button } from '../../../shared/Button/Button';
 import { Typhography } from '../../../shared/Typhography/Typhography';
 import { getTotalPrice } from '../../../utils/helpers/PriceCalculator/';
-import { PizzaContext } from '../../PizzaOutlet/PizzaOutlet';
+import { usePizzaStore } from '../../../utils/stores/PizzaStore';
 import { PizzaCartElement } from '../PizzaCartElement/PizzaCartElement';
 import styles from './PizzaCart.module.css';
 
 export const PizzaCart = () => {
-  const cartPizzas = useContext(PizzaContext);
+  const { pizzas } = usePizzaStore();
 
   interface UniqData {
     count: number;
@@ -29,9 +28,9 @@ export const PizzaCart = () => {
     return uniqData;
   };
 
-  const uniqData = createUniqData(cartPizzas.pizzas);
+  const uniqData = createUniqData(pizzas);
 
-  console.log(cartPizzas.pizzas);
+  console.log(pizzas);
 
   return (
     <div className={styles.layout}>
@@ -46,7 +45,7 @@ export const PizzaCart = () => {
           <div className={styles.footer}>
             <div className={styles['footer-container']}>
               <Typhography tag="h2" variant="title-form" children={'Стоимость заказа: '} />
-              <Typhography tag="h2" variant="title-form" children={`${getTotalPrice(cartPizzas.pizzas)} ₽`} />
+              <Typhography tag="h2" variant="title-form" children={`${getTotalPrice(pizzas)} ₽`} />
             </div>
             <Link to="/cart/person">
               <Button variant="accept" children="Оформить заказ" className={styles.pay} />

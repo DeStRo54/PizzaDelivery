@@ -1,12 +1,12 @@
 import clsx from 'clsx';
-import React, { useContext } from 'react';
+import React from 'react';
 
-import { PizzaContext } from '../../../components/PizzaOutlet/PizzaOutlet.tsx';
 import { Button } from '../../../shared/Button/Button';
 import { Tabs } from '../../../shared/RadioSlider/RadioSlider';
 import { RemouteIng } from '../../../shared/RemouteImg/RemouteImg';
 import { Typhography } from '../../../shared/Typhography/Typhography';
 import { PizzaDoughs, PizzaSizes } from '../../../utils/helpers/Translater';
+import { usePizzaStore } from '../../../utils/stores/PizzaStore/index.ts';
 import { CloseIcon } from '../../icons';
 import { ToppingCard } from '../ToppingCard/ToppingCard';
 import styles from './PizzaCard.module.css';
@@ -21,6 +21,8 @@ export const PizzaCard = ({ pizza, onClose }: PizzaCardProps) => {
   const [currentPizzaDough, setCurrentPizzaDough] = React.useState(pizza.doughs[0]);
   const [currentToppings, setCurrentToppings] = React.useState([] as PizzaIngredient[]);
 
+  const { addPizza } = usePizzaStore();
+
   const PizzaToCart = {
     id: pizza.id,
     name: pizza.name,
@@ -34,8 +36,6 @@ export const PizzaCard = ({ pizza, onClose }: PizzaCardProps) => {
     size: currentPizzaSize,
     doughs: currentPizzaDough
   };
-
-  const data = useContext(PizzaContext);
 
   const changeSize = (data: PizzaSize) => {
     setCurrentPizzaSize(data);
@@ -103,7 +103,7 @@ export const PizzaCard = ({ pizza, onClose }: PizzaCardProps) => {
               </div>
             </div>
             <div className={styles['pizza-card-footer']}>
-              <Button children="Добавить в корзину" variant={'accept'} onClick={() => data.addPizza(PizzaToCart)} />
+              <Button children="Добавить в корзину" variant={'accept'} onClick={() => addPizza(PizzaToCart)} />
             </div>
           </div>
         </div>

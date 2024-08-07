@@ -1,12 +1,10 @@
-import { useContext } from 'react';
-
 import { Counter } from '../../../shared/Counter/Counter';
 import { RemouteIng } from '../../../shared/RemouteImg/RemouteImg';
 import { Typhography } from '../../../shared/Typhography/Typhography';
 import { PriceCalculator } from '../../../utils/helpers/PriceCalculator';
 import { PizzaDoughsTabs, PizzaSizes, PizzaSizesTabs, PizzaToppings } from '../../../utils/helpers/Translater';
+import { usePizzaStore } from '../../../utils/stores/PizzaStore';
 import { CloseIcon } from '../../icons';
-import { PizzaContext } from '../../PizzaOutlet/PizzaOutlet';
 import styles from './PizzaCartElement.module.css';
 
 interface PizzaCartElementProps {
@@ -15,18 +13,18 @@ interface PizzaCartElementProps {
 }
 
 export const PizzaCartElement = ({ pizza, count }: PizzaCartElementProps) => {
-  const funcData = useContext(PizzaContext);
+  const { addPizza, deletePizza, deleteCurrentPizzas } = usePizzaStore();
 
   const PlusPizzaCount = () => {
-    funcData.addPizza(pizza);
+    addPizza(pizza);
   };
 
   const MinusPizzaCount = () => {
-    count > 1 && funcData.deletePizza(pizza);
+    count > 1 && deletePizza(pizza);
   };
 
   const DeletePizzas = () => {
-    funcData.deletePizzasInCart(pizza);
+    deleteCurrentPizzas(pizza);
   };
 
   return (

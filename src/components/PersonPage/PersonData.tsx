@@ -64,9 +64,9 @@ export const PersonData = () => {
           <Link to="/cart" className={styles['link-cancel']}>
             <Button variant="cancel" children="Назад" className={styles.button} />
           </Link>
-          <Link to="/cart/payment">
-            <Button type="submit" variant="accept" children="Продолжить" className={styles.button} />
-          </Link>
+          {/* <Link to='/cart/payment'> */}
+          <Button variant="accept" children="Продолжить" className={styles.button} />
+          {/* </Link> */}
         </div>
       </form>
     </div>
