@@ -1,0 +1,16 @@
+.container {
+    display: flex;
+    align-items: center;
+    font-size: var(--secondary-text-size);
+    justify-content: space-between;
+    background-color: #F3F4F6;
+    border-radius: 14px;
+    font-weight: 500;
+    padding: 0 13px;
+    width: 100px;
+}
+
+.icon {
+    padding: 13px 0;
+    height: 100%;
+}

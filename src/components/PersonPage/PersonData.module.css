@@ -1,0 +1,30 @@
+.layout {
+    display: flex;
+    flex-direction: column;
+    width: 464px;
+    gap: 24px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.title {
+    font-size: 28px;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.link-cancel {
+    color: var(--secondary-color-size);
+}
+
+.button {
+    width: 220px;
+}

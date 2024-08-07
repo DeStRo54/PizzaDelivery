@@ -1,0 +1,43 @@
+.title {
+  font-weight: 600;
+  font-size: var(--title-text-size);
+  line-height: 24px;
+  text-align: left;
+  color: var(--title-color);
+}
+
+.title-form {
+  font-weight: 700;
+  font-size: var(--title-form-text-size);
+  line-height: 24px;
+  text-align: left;
+  color: var(--title-color);
+}
+
+.paragraph14-regular {
+  font-weight: 400;
+  font-size: var(--secondary-text-size);
+  line-height: 24px;
+  text-align: left;
+  color: var(--body-primary-color);
+}
+
+.paragraph16-regular {
+  font-weight: 400;
+  font-size: var(--primary-text-size);
+  line-height: 24px;
+  text-align: left;
+  color: var(--body-primary-color);
+}
+
+.pizza-tag {
+  width: auto;
+  padding: 12px;
+  border-color: var(--accept-button-color);
+  border-radius: 16px;
+  color: var(--text-invert-color);
+  font-size: var(--primary-text-size);
+  font-weight: 500;
+  background-color: var(--accept-button-color);
+  border: 1px solid;
+}

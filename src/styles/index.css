@@ -1,0 +1,22 @@
+:root {
+    --title-color: #292929;
+    --body-primary-color: #535353;
+    --secondary-text-color: #344051;
+    --accept-button-color: #F4511E;
+    --text-invert-color: white;
+    --accept-button-hover-color: #B33C15;
+    --accept-button-focus-color: #FFB98C;
+    --quartenery-color: #97A1AF;
+    --border-light-color: #CED2DA;
+    --bg-disabled-color: #F3F4F6;
+
+    --thirdy-text-size: 12px;
+    --secondary-text-size: 14px;
+    --primary-text-size: 16px;
+    --title-text-size: 20px;
+    --title-form-text-size: 24px;
+}
+
+* {
+    font-family: 'Inter', sans-serif;
+}
