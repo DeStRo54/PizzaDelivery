@@ -1,13 +1,16 @@
-import { Link } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 import { Button } from '../../shared/Button/Button';
 import { Input } from '../../shared/Input/Input';
 import { Typhography } from '../../shared/Typhography/Typhography';
+import { usePizzaStore } from '../../utils/stores/PizzaStore';
 import { useSetPersonData } from './hooks/useSetPersonData';
 import styles from './PersonData.module.css';
 
 export const PersonData = () => {
   const { form, functions } = useSetPersonData();
+  const { pizzas } = usePizzaStore();
+  const navigate = useNavigate();
 
   return (
     <div className={styles.layout}>
@@ -61,14 +64,16 @@ export const PersonData = () => {
         />
 
         <div className={styles.footer}>
-          <Link to="/cart" className={styles['link-cancel']}>
-            <Button variant="cancel" children="Назад" className={styles.button} />
-          </Link>
-          {/* <Link to='/cart/payment'> */}
-          <Button variant="accept" children="Продолжить" className={styles.button} />
-          {/* </Link> */}
+          <Button variant="cancel" onClick={() => navigate('/cart')} children="Назад" className={styles.button} />
+          <Button
+            variant="accept"
+            onClick={() => navigate('/cart/payment')}
+            children="Продолжить"
+            className={styles.button}
+          />
         </div>
       </form>
+      {pizzas.length === 0 && <Navigate to="/cart" />}
     </div>
   );
 };

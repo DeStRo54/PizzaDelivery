@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { Button } from '../../../shared/Button/Button';
 import { Typhography } from '../../../shared/Typhography/Typhography';
@@ -9,6 +9,7 @@ import styles from './PizzaCart.module.css';
 
 export const PizzaCart = () => {
   const { pizzas } = usePizzaStore();
+  const navigate = useNavigate();
 
   interface UniqData {
     count: number;
@@ -30,8 +31,6 @@ export const PizzaCart = () => {
 
   const uniqData = createUniqData(pizzas);
 
-  console.log(pizzas);
-
   return (
     <div className={styles.layout}>
       <Typhography tag="h2" variant="title" children="Корзина" className={styles['title']} />
@@ -47,9 +46,12 @@ export const PizzaCart = () => {
               <Typhography tag="h2" variant="title-form" children={'Стоимость заказа: '} />
               <Typhography tag="h2" variant="title-form" children={`${getTotalPrice(pizzas)} ₽`} />
             </div>
-            <Link to="/cart/person">
-              <Button variant="accept" children="Оформить заказ" className={styles.pay} />
-            </Link>
+            <Button
+              variant="accept"
+              onClick={() => navigate('/cart/person')}
+              children="Оформить заказ"
+              className={styles.pay}
+            />
           </div>
         </>
       )}

@@ -9,7 +9,7 @@ export const PersonSheme = z.object({
   adress: z
     .string()
     .min(1, { message: 'Поле обязательно для заполнения' })
-    .refine((value) => value.trim().split(', ').length >= 3, { message: 'Некорректный адрес' })
+    .refine((value) => value.trim().split(' ').length >= 3, { message: 'Некорректный адрес' })
 });
 
 export type PersonSheme = z.infer<typeof PersonSheme>;
