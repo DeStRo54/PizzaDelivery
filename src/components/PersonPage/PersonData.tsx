@@ -1,14 +1,16 @@
+import { Controller } from 'react-hook-form';
+import { PatternFormat } from 'react-number-format';
 import { Navigate, useNavigate } from 'react-router-dom';
 
 import { Button } from '../../shared/Button/Button';
 import { Input } from '../../shared/Input/Input';
 import { Typhography } from '../../shared/Typhography/Typhography';
 import { usePizzaStore } from '../../utils/stores/PizzaStore';
-import { useSetPersonData } from './hooks/useSetPersonData';
+import { usePersonView } from './hooks/usePersonView.ts';
 import styles from './PersonData.module.css';
 
 export const PersonData = () => {
-  const { form, functions } = useSetPersonData();
+  const { form, functions } = usePersonView();
   const { pizzas } = usePizzaStore();
   const navigate = useNavigate();
 
@@ -42,13 +44,20 @@ export const PersonData = () => {
           })}
         />
 
-        <Input
-          label="Телефон*"
-          placeholder="Телефон"
-          {...form.register('phone')}
-          {...(form.formState.errors.phone && { error: form.formState.errors.phone.message })}
+        <Controller
+          control={form.control}
+          name="phone"
+          render={({ field, fieldState }) => (
+            <Input
+              {...field}
+              label="Телефон*"
+              placeholder="Телефон"
+              component={PatternFormat}
+              format="+7 (###) ### ## ##"
+              {...(fieldState.error && { error: fieldState.error.message })}
+            />
+          )}
         />
-
         <Input
           label="E-mail*"
           placeholder="E-mail"
@@ -65,12 +74,7 @@ export const PersonData = () => {
 
         <div className={styles.footer}>
           <Button variant="cancel" onClick={() => navigate('/cart')} children="Назад" className={styles.button} />
-          <Button
-            variant="accept"
-            onClick={() => navigate('/cart/payment')}
-            children="Продолжить"
-            className={styles.button}
-          />
+          <Button variant="accept" children="Продолжить" className={styles.button} />
         </div>
       </form>
       {pizzas.length === 0 && <Navigate to="/cart" />}

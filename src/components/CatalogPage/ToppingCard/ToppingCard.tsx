@@ -7,10 +7,11 @@ import styles from './ToppingCard.module.css';
 
 interface ToppingCardProps extends React.ComponentProps<'div'> {
   topping: PizzaIngredient;
+  isChecked?: boolean;
 }
 
-export const ToppingCard = ({ topping, className, ...props }: ToppingCardProps) => (
-  <div className={clsx(styles['topping-card'], className)} {...props}>
+export const ToppingCard = ({ topping, isChecked, className, ...props }: ToppingCardProps) => (
+  <div className={clsx(styles['topping-card'], className, isChecked && styles.checked)} {...props}>
     <RemouteIng src={topping.img} variant="topping" />
     <Typhography
       className={styles['topping-name']}

@@ -1,4 +1,3 @@
-import clsx from 'clsx';
 import React from 'react';
 
 import { Button } from '../../../shared/Button/Button';
@@ -94,7 +93,7 @@ export const PizzaCard = ({ pizza, onClose }: PizzaCardProps) => {
               <div className={styles['toppings-container']}>
                 {pizza.toppings.map((topping) => (
                   <ToppingCard
-                    className={clsx(currentToppings.includes(topping) && styles['checked-topping'])}
+                    isChecked={currentToppings.includes(topping)}
                     key={topping.name}
                     topping={topping}
                     onClick={() => checkToppings(topping)}

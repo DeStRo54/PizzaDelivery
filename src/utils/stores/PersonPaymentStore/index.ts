@@ -2,21 +2,17 @@ import { create } from 'zustand';
 import { devtools } from 'zustand-devtools';
 
 interface PersonPaymentStoreState {
-  receiverAddress: CreatePizzaPaymentAddressDto;
-  person: CreatePizzaPaymentPersonDto;
+  deliveryInfo: PersonPayment;
   debitCard: CreatePizzaPaymentDebitCardDto;
-  addPerson: (person: CreatePizzaPaymentPersonDto) => void;
-  addAdress: (adress: CreatePizzaPaymentAddressDto) => void;
+  addDeliveryInfo: (person: PersonPayment) => void;
   addPayment: (payment: CreatePizzaPaymentDebitCardDto) => void;
 }
 
 export const usePersonPaymentStore = create<PersonPaymentStoreState>()(
   devtools((set) => ({
-    receiverAddress: {} as CreatePizzaPaymentAddressDto,
-    person: {} as CreatePizzaPaymentPersonDto,
+    deliveryInfo: {} as PersonPayment,
     debitCard: {} as CreatePizzaPaymentDebitCardDto,
-    addPerson: (person: CreatePizzaPaymentPersonDto) => set({ person }),
-    addAdress: (receiverAddress: CreatePizzaPaymentAddressDto) => set({ receiverAddress }),
+    addDeliveryInfo: (deliveryInfo: PersonPayment) => set({ deliveryInfo }),
     addPayment: (debitCard: CreatePizzaPaymentDebitCardDto) => set({ debitCard })
   }))
 );

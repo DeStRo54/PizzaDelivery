@@ -7,7 +7,13 @@
   height: 190px;
   padding: 8px;
   background-color: antiquewhite;
+  border: 2px solid;
+  border-color: antiquewhite;
   border-radius: 16px;
+}
+
+.checked {
+  border-color: red;
 }
 
 .topping-name {
