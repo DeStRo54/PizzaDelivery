@@ -1,3 +1,8 @@
+interface UniqPizzas {
+  count: number;
+  value: PizzaCardChecked;
+}
+
 interface PizzaCardChecked {
   id: string;
   name: string;

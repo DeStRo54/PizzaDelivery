@@ -30,6 +30,6 @@ export const Input = React.forwardRef(
       </div>
     );
   }
-) as <T extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any> = 'input'>(
-  props: InputProps<T> & { ref?: React.RefAttributes<HTMLInputElement> }
+) as <Component extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any> = 'input'>(
+  props: InputProps<Component> & { ref?: React.RefAttributes<HTMLInputElement> }
 ) => React.ReactElement;

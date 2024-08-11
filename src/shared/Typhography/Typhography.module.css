@@ -14,12 +14,20 @@
   color: var(--title-color);
 }
 
+.paragraph12-regular {
+  font-weight: 400;
+  font-size: var(--thirdy-text-size);
+  line-height: 16px;
+  text-align: left;
+  color: var(--text-tertiary-color);
+}
+
 .paragraph14-regular {
   font-weight: 400;
   font-size: var(--secondary-text-size);
   line-height: 24px;
   text-align: left;
-  color: var(--body-primary-color);
+  color: var(--text-primary-color);
 }
 
 .paragraph16-regular {
@@ -27,7 +35,7 @@
   font-size: var(--primary-text-size);
   line-height: 24px;
   text-align: left;
-  color: var(--body-primary-color);
+  color: var(--text-primary-color);
 }
 
 .pizza-tag {

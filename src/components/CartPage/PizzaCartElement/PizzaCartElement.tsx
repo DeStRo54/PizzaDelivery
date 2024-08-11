@@ -3,7 +3,7 @@ import { RemouteIng } from '../../../shared/RemouteImg/RemouteImg';
 import { Typhography } from '../../../shared/Typhography/Typhography';
 import { PriceCalculator } from '../../../utils/helpers/PriceCalculator';
 import { PizzaDoughsTabs, PizzaSizes, PizzaSizesTabs, PizzaToppings } from '../../../utils/helpers/Translater';
-import { usePizzaStore } from '../../../utils/stores/PizzaStore';
+import { usePaymentStore } from '../../../utils/stores/PaymentStore';
 import { CloseIcon } from '../../icons';
 import styles from './PizzaCartElement.module.css';
 
@@ -13,7 +13,7 @@ interface PizzaCartElementProps {
 }
 
 export const PizzaCartElement = ({ pizza, count }: PizzaCartElementProps) => {
-  const { addPizza, deletePizza, deleteCurrentPizzas } = usePizzaStore();
+  const { addPizza, deletePizza, deleteCurrentPizzas } = usePaymentStore();
 
   const PlusPizzaCount = () => {
     addPizza(pizza);

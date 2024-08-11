@@ -4,7 +4,7 @@ import { getPizzas } from '../requests';
 
 export const useGetPizzasQuery = () =>
   useQuery({
-    queryKey: ['pizzas'],
+    queryKey: ['getPizzas'],
     queryFn: () => getPizzas(),
     refetchOnWindowFocus: false //during development!!!
   });

@@ -25,6 +25,17 @@ export const PizzaDoughs = {
   THICK: 'Традиционное тесто'
 };
 
+export const PizzaSizeOrder = {
+  SMALL: 'маленькая',
+  MEDIUM: 'средняя',
+  LARGE: 'большая'
+};
+
+export const PizzaDoughsOrder = {
+  THIN: 'тонкое тесто',
+  THICK: 'традиционное тесто'
+};
+
 export const PizzaToppings = {
   PINEAPPLE: 'Ананас',
   MOZZARELLA: 'Моцарелла',
@@ -44,4 +55,25 @@ export const PizzaToppings = {
   SHRIMPS: 'Креветки',
   CHICKEN_FILLET: 'Куриное филе',
   MEATBALLS: 'Фрикадельки'
+};
+
+export const PizzaToppingsOrder = {
+  PINEAPPLE: 'ананас',
+  MOZZARELLA: 'моцарелла',
+  PEPERONI: 'пепперони',
+  GREEN_PEPPER: 'зеленый перец',
+  MUSHROOMS: 'грибы',
+  BASIL: 'базилик',
+  CHEDDAR: 'чеддер',
+  PARMESAN: 'пармезан',
+  FETA: 'фета',
+  HAM: 'ветчина',
+  PICKLE: 'карнишоны',
+  TOMATO: 'помидор',
+  BACON: 'бекон',
+  ONION: 'лук',
+  CHILE: 'чили',
+  SHRIMPS: 'креветки',
+  CHICKEN_FILLET: 'куриное филе',
+  MEATBALLS: 'фрикадельки'
 };

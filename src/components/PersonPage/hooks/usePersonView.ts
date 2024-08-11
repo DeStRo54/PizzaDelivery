@@ -2,11 +2,11 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
-import { usePersonPaymentStore } from '../../../utils/stores/PersonPaymentStore';
+import { usePaymentStore } from '../../../utils/stores/PaymentStore';
 import { PersonSheme } from '../PersonSheme';
 
 export const usePersonView = () => {
-  const { deliveryInfo, addDeliveryInfo } = usePersonPaymentStore();
+  const { deliveryInfo, addDeliveryInfo } = usePaymentStore();
   const navigate = useNavigate();
   const personForm = useForm<PersonSheme>({
     mode: 'onBlur',
