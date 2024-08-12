@@ -11,7 +11,6 @@
   opacity: 1;
   transition: opacity 0.3s ease-in-out;
   pointer-events: all;
-  z-index: 1000;
 }
 
 .pizza-card-layout {
@@ -39,14 +38,22 @@
   gap: 32px;
 }
 
-.pizza-card-data {
+.pizza-img {
+  width: 220px;
+  height: 220px;
+}
+
+.description {
   display: flex;
-  align-items: center;
-  width: 100%;
   flex-direction: column;
+  justify-content: space-between;
+}
+
+.pizza-card-data {
+  width: 100%;
+  height: 515px;
   padding-left: 16px;
   padding-right: 12px;
-  margin-bottom: 62px;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -64,27 +71,17 @@
   gap: 8px;
 }
 
-.pizza-toppings {
-  display: flex;
-  flex-direction: column;
-  margin-top: 12px;
-  gap: 8px;
+.toppings-title {
+  margin: 24px 0;
 }
 
 .toppings-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
-  height: 40px;
+  margin-bottom: 14px;
 }
 
-.pizza-card-footer {
-  position: fixed;
-  width: 426px;
-  top: calc(100% - 108px);
-
-  button {
-    margin-left: 3px;
-    width: 100%;
-  }
+.button {
+  width: 100%;
 }

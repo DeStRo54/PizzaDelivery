@@ -24,9 +24,9 @@ export const PizzaCatalog = () => {
   return (
     <div className={styles.layout}>
       <Typhography tag="h2" variant="title" children="Каталог" className={styles.title} />
-      <div className={styles.container}>
+      <ul className={styles.container}>
         {data?.data.catalog.map((pizza) => (
-          <div key={pizza.id} className={styles.card}>
+          <li key={pizza.id} className={styles.card}>
             <RemouteIng src={pizza.img} variant="card" />
             <div className={styles['card-info']}>
               <Typhography tag="h3" variant="title" children={pizza.name} />
@@ -36,11 +36,11 @@ export const PizzaCatalog = () => {
               <Typhography tag="p" variant="title" children={`от ${pizza.sizes[0].price}₽`} />
               <Button variant="accept" children="Выбрать" onClick={() => PizzaCardClick(pizza)} />
             </div>
-          </div>
+          </li>
         ))}
 
         {isActive && <PizzaCard pizza={currentPizza} onClose={() => setIsActive(false)} />}
-      </div>
+      </ul>
     </div>
   );
 };

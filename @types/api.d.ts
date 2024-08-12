@@ -57,7 +57,7 @@ interface Pizza {
 
 type PizzasResponse = {
   success: boolean;
-  reason: string;
+  reason?: string;
   catalog: Pizza[];
 };
 
@@ -99,6 +99,15 @@ interface CreatePizzaPaymentDto {
 
 type PizzaPaymentResponse = {
   success: boolean;
-  reason: string;
+  reason?: string;
   order: CreatePizzaPaymentDto;
 };
+
+interface User {
+  firstname?: string;
+  lastname?: string;
+  middlename?: string;
+  phone: string;
+  email?: string;
+  city?: string;
+}

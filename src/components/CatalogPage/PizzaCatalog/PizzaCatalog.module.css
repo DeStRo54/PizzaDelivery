@@ -10,12 +10,12 @@
   font-size: 28px;
 }
 
-
 .container {
   box-sizing: border-box;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
+  margin: 0;
 }
 
 .card {
@@ -24,7 +24,7 @@
   align-items: center;
   width: 304px;
   gap: 32px;
-  margin-bottom: 48px;
+  margin-bottom: 55px;
 }
 
 .card-info {
@@ -38,6 +38,7 @@
   display: flex;
   flex-direction: column;
   margin-top: auto;
+  width: 100%;
   gap: 24px;
 }
 

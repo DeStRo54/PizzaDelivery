@@ -1,5 +1,5 @@
 /* Reset and base styles  */
-* {
+*:not(ul) {
   padding: 0px;
   margin: 0px;
   border: none;
@@ -45,19 +45,18 @@ p {
   font-weight: inherit;
 }
 
-ul,
+ul {
+  padding: 0px;
+  border: none;
+  list-style: none;
+}
+
 ul li {
   list-style: none;
 }
 
 img {
   vertical-align: top;
-}
-
-img,
-svg {
-  max-width: 100%;
-  height: auto;
 }
 
 address {

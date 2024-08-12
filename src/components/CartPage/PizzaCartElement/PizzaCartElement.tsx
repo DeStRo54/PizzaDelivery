@@ -28,7 +28,7 @@ export const PizzaCartElement = ({ pizza, count }: PizzaCartElementProps) => {
   };
 
   return (
-    <div className={styles.container}>
+    <li className={styles.container}>
       <RemouteIng src={pizza.img} variant={'cart'} className={styles.img} />
       <Typhography tag="h1" variant="paragraph16-regular" children={pizza.name} className={styles['name']} />
       <div className={styles['container-info']}>
@@ -57,6 +57,6 @@ export const PizzaCartElement = ({ pizza, count }: PizzaCartElementProps) => {
         className={styles['cost']}
       />
       <CloseIcon className={styles['exit-icon']} CloseIconVariant={'basket'} onClick={DeletePizzas} />
-    </div>
+    </li>
   );
 };

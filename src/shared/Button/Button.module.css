@@ -4,12 +4,11 @@
   padding: 16px 32px;
   border-radius: 16px;
   font-weight: 500;
-  border: 2px solid;
-  transition: all 0.25s ease-out;
+  border: 1px solid;
+  transition: all 0.2s ease-out;
 }
 
 .accept {
-  border-color: var(--accept-button-color);
   color: var(--text-invert-color);
   font-size: var(--primary-text-size);
   background-color: var(--accept-button-color);
@@ -19,9 +18,14 @@
     border-color: var(--accept-button-hover-color);
   }
 
+  &:focus {
+    /* border-color: var(--accept-button-color); */
+    border-color: #FDAB76;
+  }
+
   &:disabled {
-    background-color: var(--accept-button-focus-color);
-    border-color: var(--accept-button-focus-color);
+    background-color: var(--accept-button-color);
+    border-color: var(--accept-button-color);
   }
 }
 

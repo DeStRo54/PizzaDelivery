@@ -6,14 +6,21 @@
   width: 120px;
   height: 190px;
   padding: 8px;
-  background-color: antiquewhite;
+  background-color: var(--text-invert-color);
   border: 2px solid;
-  border-color: antiquewhite;
+  border-color: var(--text-invert-color);
   border-radius: 16px;
+  transition: all 0.2s ease-in-out;
+  box-shadow:
+    0px 4px 10px rgba(0, 0, 0, 0.1),
+    0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .checked {
-  border-color: red;
+  border-color: var(--accept-button-color);
+  box-shadow:
+    0px 4px 10px rgba(244, 81, 30, 0.2),
+    0px 4px 10px rgba(244, 81, 30, 0.2);
 }
 
 .topping-name {

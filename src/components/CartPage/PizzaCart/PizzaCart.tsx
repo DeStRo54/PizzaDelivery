@@ -17,11 +17,11 @@ export const PizzaCart = () => {
       <Typhography tag="h2" variant="title" children="Корзина" className={styles['title']} />
       {pizzas.length > 0 ? (
         <>
-          <div className={styles.container}>
+          <ul className={styles.container}>
             {SetUniqPizzas(pizzas).map((data, index) => (
               <PizzaCartElement key={index} pizza={data.value} count={data.count} />
             ))}
-          </div>
+          </ul>
           <div className={styles.footer}>
             <div className={styles['footer-container']}>
               <Typhography tag="h2" variant="title-form" children={'Стоимость заказа: '} />
