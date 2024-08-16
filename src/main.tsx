@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import ReactDOM from 'react-dom/client';
 
 import App from './App.tsx';
-import { getUserSession } from './utils/api/requests/session/index.ts';
+import { getUserSession } from './utils/api/requests/users/session';
 import { LOCALE_STORAGE_KEYS } from './utils/constants/localeStorageKeys.ts';
 import { useAuthStore } from './utils/stores/AuthStore/index.ts';
 

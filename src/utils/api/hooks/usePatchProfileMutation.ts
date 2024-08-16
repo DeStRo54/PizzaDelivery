@@ -1,6 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
 
-import { patchProfile, ProfileParams } from '../requests/profile';
+import { patchProfile, ProfileParams } from '../requests/users/profile';
 
 export const usePatchProfileMutation = () =>
   useMutation({

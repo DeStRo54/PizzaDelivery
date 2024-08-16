@@ -19,7 +19,6 @@
   }
 
   &:focus {
-    /* border-color: var(--accept-button-color); */
     border-color: #FDAB76;
   }
 
@@ -46,10 +45,21 @@
 }
 
 .cancel {
-  border-color: var(--border-light-color);
+  border-color: gray;
+  font-size: var(--primary-text-size);
 
   &:hover {
     background-color: var(--border-light-color);
     border-color: var(--border-light-color);
+  }
+
+  &:focus {
+    border-color: var(--accept-button-color);
+    border-color: #FDAB76;
+  }
+
+  &:disabled {
+    background-color: var(--accept-button-color);
+    border-color: var(--accept-button-color);
   }
 }

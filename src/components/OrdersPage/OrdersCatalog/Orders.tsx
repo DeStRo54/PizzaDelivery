@@ -1,4 +1,4 @@
-import { Typhography } from '../../shared/Typhography/Typhography';
+import { Typhography } from '../../../shared/Typhography/Typhography';
 import styles from './Orders.module.css';
 
 export const Orders = () => {

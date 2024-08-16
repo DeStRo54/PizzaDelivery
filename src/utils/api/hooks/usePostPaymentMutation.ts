@@ -1,6 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
 
-import { PaymentParams, postPayment } from '../requests/payment';
+import { PaymentParams, postPayment } from '../requests/pizza/payment';
 
 export const usePostPaymentMutation = () =>
   useMutation({

@@ -1,4 +1,4 @@
-import { api } from '../../instance';
+import { api } from '../../../instance';
 
 export type PostOtpParams = CreateOtpDto;
 export type OtpParams = AxiosRequestConfig<PostOtpParams>;
