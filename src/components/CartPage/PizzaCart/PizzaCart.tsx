@@ -14,7 +14,7 @@ export const PizzaCart = () => {
 
   return (
     <div className={styles.layout}>
-      <Typhography tag="h2" variant="title" children="Корзина" className={styles['title']} />
+      <Typhography tag="h2" variant="title-form" children="Корзина" />
       {pizzas.length > 0 ? (
         <>
           <ul className={styles.container}>

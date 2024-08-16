@@ -6,10 +6,6 @@
   gap: 40px;
 }
 
-.title {
-  font-size: 28px;
-}
-
 .container {
   box-sizing: border-box;
   display: grid;

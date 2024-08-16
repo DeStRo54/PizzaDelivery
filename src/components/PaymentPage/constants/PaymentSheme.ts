@@ -1,9 +1,24 @@
 import * as z from 'zod';
 
 export const PaymentSheme = z.object({
-  pan: z.string().min(9, { message: 'Поле обязательно для заполнения' }),
-  expireDate: z.string().min(5, { message: 'Поле обязательно для заполнения' }),
-  cvv: z.string().min(3, { message: 'Поле обязательно для заполнения' })
+  pan: z
+    .string()
+    .min(1, { message: 'Поле обязательно для заполнения' })
+    .refine((value) => value.trim().length == 8, {
+      message: 'Некорректный номер карты'
+    }),
+  expireDate: z
+    .string()
+    .min(1, { message: 'Поле обязательно для заполнения' })
+    .refine((value) => value.trim().replace(/\//g, '').length == 4, {
+      message: 'Некорректная дата'
+    }),
+  cvv: z
+    .string()
+    .min(1, { message: 'Поле обязательно для заполнения' })
+    .refine((value) => value.trim().length == 3, {
+      message: 'Некорректная дата'
+    })
 });
 
 export type PaymentSheme = z.infer<typeof PaymentSheme>;

@@ -13,8 +13,11 @@ export const usePaymentView = () => {
   const [stage, setStage] = React.useState('');
 
   const paymentForm = useForm<PaymentSheme>({
-    mode: 'onBlur',
-    defaultValues: debitCard,
+    defaultValues: {
+      pan: debitCard.pan ?? '',
+      expireDate: debitCard.expireDate ?? '',
+      cvv: debitCard.cvv ?? ''
+    },
     resolver: zodResolver(PaymentSheme)
   });
 
@@ -27,7 +30,12 @@ export const usePaymentView = () => {
           apartment: receiverAdress[2],
           comment: receiverAdress[3]
         },
-        person: deliveryInfo, //возможжно надо будет поправить
+        person: {
+          firstname: deliveryInfo.firstname ?? '',
+          lastname: deliveryInfo.lastname ?? '',
+          middlename: deliveryInfo.middlename ?? '',
+          phone: deliveryInfo.phone
+        }, //возможжно надо будет поправить
         debitCard: data,
         pizzas: pizzas //возможжно надо будет поправить
       }
@@ -39,7 +47,7 @@ export const usePaymentView = () => {
   const closeSuccess = () => {
     usePaymentStore.setState({
       debitCard: {} as CreatePizzaPaymentDebitCardDto,
-      deliveryInfo: {} as PersonPayment,
+      deliveryInfo: {} as Person,
       pizzas: [] as PizzaCardChecked[]
     });
   };

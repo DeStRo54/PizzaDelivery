@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { useAuthStore } from '../../utils/stores/AuthStore';
 import { ExitIcon, GroupIcon, LogoIcon, TimeIcon, UserIcon } from '../icons';
@@ -7,6 +7,15 @@ import styles from './Header.module.css';
 
 export const Header = () => {
   const { isLoggedIn } = useAuthStore();
+  const navigate = useNavigate();
+
+  const setAuthStatus = () => {
+    if (isLoggedIn) useAuthStore.setState({ logOut: true });
+    else {
+      navigate(auth);
+    }
+  };
+
   return (
     <header className={styles.header}>
       <Link to={catalog}>
@@ -34,10 +43,10 @@ export const Header = () => {
             </Link>
           </li>
           <li className={styles['header-nav-item']}>
-            <Link to={isLoggedIn ? catalog : auth}>
+            <a onClick={setAuthStatus}>
               <ExitIcon />
               {isLoggedIn ? 'Выйти' : 'Войти'}
-            </Link>
+            </a>
           </li>
         </ul>
       </nav>

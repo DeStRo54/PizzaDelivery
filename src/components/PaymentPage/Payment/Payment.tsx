@@ -33,18 +33,20 @@ export const Payment = () => {
 
   return (
     <div className={styles.layout}>
-      <Typhography tag="h2" variant="title" children="Введите данные карты для оплаты" className={styles.title} />
+      <Typhography tag="h2" variant="title-form" children="Введите данные карты для оплаты" />
       <form className={styles.container} onSubmit={functions.onSubmit}>
         <div className={styles['data-container']}>
           <Controller
             name="pan"
             control={form.control}
-            render={({ field, fieldState }) => (
+            render={({ field: { onChange, value = '', ...field }, fieldState }) => (
               <Input
                 label="Номер*"
                 placeholder="0000 0000"
                 component={PatternFormat}
                 format="#### ####"
+                value={value}
+                onChange={(e) => onChange(e.target.value.replace(/ /g, ''))}
                 {...field}
                 {...(fieldState.error && { error: fieldState.error.message })}
               />
@@ -54,12 +56,14 @@ export const Payment = () => {
             <Controller
               name="expireDate"
               control={form.control}
-              render={({ field, fieldState }) => (
+              render={({ field: { onChange, value = '', ...field }, fieldState }) => (
                 <Input
                   label="Срок*"
                   placeholder="00/00"
                   component={PatternFormat}
                   format="##/##"
+                  value={value}
+                  onChange={(e) => onChange(e.target.value.replace(/\//g, ''))}
                   {...field}
                   {...(fieldState.error && { error: fieldState.error.message })}
                 />
@@ -68,12 +72,14 @@ export const Payment = () => {
             <Controller
               name="cvv"
               control={form.control}
-              render={({ field, fieldState }) => (
+              render={({ field: { onChange, value = '', ...field }, fieldState }) => (
                 <Input
                   label="CVV*"
                   placeholder="000"
                   component={PatternFormat}
                   format="###"
+                  value={value}
+                  onChange={(e) => onChange(e.target.value.replace(/ /g, ''))}
                   {...field}
                   {...(fieldState.error && { error: fieldState.error.message })}
                 />

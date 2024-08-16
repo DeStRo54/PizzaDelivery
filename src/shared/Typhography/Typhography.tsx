@@ -15,7 +15,7 @@ type TyphographyVariant =
 export type TyphographyProps<Tag extends TyphographyTag> = React.ComponentProps<Exclude<Tag, 'span'>> & {
   tag?: TyphographyTag;
   variant: TyphographyVariant;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 };
 
 export const Typhography = <Tag extends TyphographyTag>({

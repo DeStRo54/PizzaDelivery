@@ -111,3 +111,49 @@ interface User {
   email?: string;
   city?: string;
 }
+
+interface CreateOtpDto {
+  phone: string;
+}
+
+type OtpResponse = {
+  success: boolean;
+  reason?: string;
+  retryDelay: number;
+};
+
+interface SignInDto extends CreateOtpDto {
+  code: number;
+}
+
+type SignInResponse = {
+  success: boolean;
+  reason?: string;
+  user: User;
+  token: string;
+};
+
+type SessionResponse = {
+  success: boolean;
+  reason?: string;
+  user: User;
+};
+
+interface UpdateProfileProfileDto {
+  firstname: string;
+  middlename: string;
+  lastname: string;
+  email: string;
+  city: string;
+}
+
+interface UpdateProfileDto {
+  profile: UpdateProfileProfileDto;
+  phone: string;
+}
+
+type UpdateProfileResponse = {
+  success: boolean;
+  reason?: string;
+  user: User;
+};

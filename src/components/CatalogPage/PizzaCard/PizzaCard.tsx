@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import React from 'react';
 
 import { Button } from '../../../shared/Button/Button';
@@ -12,6 +13,7 @@ import styles from './PizzaCard.module.css';
 
 interface PizzaCardProps {
   pizza: Pizza;
+  active?: boolean;
   onClose: () => void;
 }
 
@@ -58,7 +60,7 @@ export const PizzaCard = ({ pizza, onClose }: PizzaCardProps) => {
   };
 
   return (
-    <div className={styles['container']}>
+    <div className={clsx(styles['container'])}>
       <div className={styles['pizza-card-layout']}>
         <div className={styles['pizza-card-header']}>
           <CloseIcon CloseIconVariant="card" onClick={onClose} />

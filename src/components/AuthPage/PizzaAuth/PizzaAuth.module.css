@@ -1,0 +1,8 @@
+.layout {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    max-width: 464px;
+    gap: 24px;
+}

@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 import styles from './RemouteImg.module.css';
 
@@ -10,5 +11,10 @@ export interface RemouteImgProps extends React.ComponentProps<'img'> {
 }
 
 export const RemouteIng = ({ src, variant, className, ...props }: RemouteImgProps) => (
-  <img src={import.meta.env.VITE_BACKEND_URL + src} {...props} className={clsx(styles[variant], className)} />
+  <LazyLoadImage
+    src={import.meta.env.VITE_BACKEND_URL + src}
+    effect="opacity"
+    className={clsx(styles[variant], className)}
+    {...props}
+  />
 );

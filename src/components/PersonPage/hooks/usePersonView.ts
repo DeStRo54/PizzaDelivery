@@ -3,14 +3,13 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
 import { usePaymentStore } from '../../../utils/stores/PaymentStore';
-import { PersonSheme } from '../PersonSheme';
+import { PersonSheme } from '../constants/PersonSheme';
 
 export const usePersonView = () => {
   const { deliveryInfo, addDeliveryInfo } = usePaymentStore();
   const navigate = useNavigate();
   const personForm = useForm<PersonSheme>({
-    mode: 'onBlur',
-    defaultValues: deliveryInfo,
+    defaultValues: { ...deliveryInfo, phone: deliveryInfo.phone ?? '' },
     resolver: zodResolver(PersonSheme)
   });
 

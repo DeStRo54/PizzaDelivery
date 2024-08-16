@@ -16,7 +16,7 @@ export const PersonData = () => {
 
   return (
     <div className={styles.layout}>
-      <Typhography tag="h2" variant="title" children="Введите ваши данные" className={styles.title} />
+      <Typhography tag="h2" variant="title-form" children="Введите ваши данные" />
 
       <form className={styles.container} onSubmit={functions.onSubmit}>
         <Input
@@ -47,13 +47,15 @@ export const PersonData = () => {
         <Controller
           control={form.control}
           name="phone"
-          render={({ field, fieldState }) => (
+          render={({ field: { onChange, value = '', ...field }, fieldState }) => (
             <Input
               {...field}
               label="Телефон*"
               placeholder="Телефон"
               component={PatternFormat}
               format="+7 (###) ### ## ##"
+              value={value.substring(1)}
+              onChange={(e) => onChange(e.target.value.replace('+7', '8').replace(/ /g, '').replace(/\(|\)/g, ''))}
               {...(fieldState.error && { error: fieldState.error.message })}
             />
           )}

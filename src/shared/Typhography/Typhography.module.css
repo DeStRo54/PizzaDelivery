@@ -9,7 +9,7 @@
 .title-form {
   font-weight: 700;
   font-size: var(--title-form-text-size);
-  line-height: 24px;
+  line-height: 32px;
   text-align: left;
   color: var(--title-color);
 }

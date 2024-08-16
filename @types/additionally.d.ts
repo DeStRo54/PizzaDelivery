@@ -13,7 +13,7 @@ interface PizzaCardChecked {
   doughs: PizzaDough;
 }
 
-interface PersonPayment extends CreatePizzaPaymentPersonDto {
+interface Person extends CreatePizzaPaymentPersonDto {
   email: string;
   adress: string;
 }
