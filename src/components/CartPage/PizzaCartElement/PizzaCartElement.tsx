@@ -1,12 +1,10 @@
-import { useContext } from 'react';
-
 import { Counter } from '../../../shared/Counter/Counter';
 import { RemouteIng } from '../../../shared/RemouteImg/RemouteImg';
 import { Typhography } from '../../../shared/Typhography/Typhography';
 import { PriceCalculator } from '../../../utils/helpers/PriceCalculator';
 import { PizzaDoughsTabs, PizzaSizes, PizzaSizesTabs, PizzaToppings } from '../../../utils/helpers/Translater';
+import { usePaymentStore } from '../../../utils/stores/PaymentStore';
 import { CloseIcon } from '../../icons';
-import { PizzaContext } from '../../PizzaOutlet/PizzaOutlet';
 import styles from './PizzaCartElement.module.css';
 
 interface PizzaCartElementProps {
@@ -15,22 +13,22 @@ interface PizzaCartElementProps {
 }
 
 export const PizzaCartElement = ({ pizza, count }: PizzaCartElementProps) => {
-  const funcData = useContext(PizzaContext);
+  const { addPizza, deletePizza, deleteCurrentPizzas } = usePaymentStore();
 
   const PlusPizzaCount = () => {
-    funcData.addPizza(pizza);
+    addPizza(pizza);
   };
 
   const MinusPizzaCount = () => {
-    count > 1 && funcData.deletePizza(pizza);
+    count > 1 && deletePizza(pizza);
   };
 
   const DeletePizzas = () => {
-    funcData.deletePizzasInCart(pizza);
+    deleteCurrentPizzas(pizza);
   };
 
   return (
-    <div className={styles.container}>
+    <li className={styles.container}>
       <RemouteIng src={pizza.img} variant={'cart'} className={styles.img} />
       <Typhography tag="h1" variant="paragraph16-regular" children={pizza.name} className={styles['name']} />
       <div className={styles['container-info']}>
@@ -59,6 +57,6 @@ export const PizzaCartElement = ({ pizza, count }: PizzaCartElementProps) => {
         className={styles['cost']}
       />
       <CloseIcon className={styles['exit-icon']} CloseIconVariant={'basket'} onClick={DeletePizzas} />
-    </div>
+    </li>
   );
 };

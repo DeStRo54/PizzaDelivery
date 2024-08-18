@@ -5,12 +5,13 @@ import { Typhography } from '../../../shared/Typhography/Typhography';
 import { PizzaToppings } from '../../../utils/helpers/Translater';
 import styles from './ToppingCard.module.css';
 
-interface ToppingCardProps extends React.ComponentProps<'div'> {
+interface ToppingCardProps extends React.ComponentProps<'li'> {
   topping: PizzaIngredient;
+  isChecked?: boolean;
 }
 
-export const ToppingCard = ({ topping, className, ...props }: ToppingCardProps) => (
-  <div className={clsx(styles['topping-card'], className)} {...props}>
+export const ToppingCard = ({ topping, isChecked, className, ...props }: ToppingCardProps) => (
+  <li className={clsx(styles['topping-card'], className, isChecked && styles.checked)} {...props}>
     <RemouteIng src={topping.img} variant="topping" />
     <Typhography
       className={styles['topping-name']}
@@ -24,5 +25,5 @@ export const ToppingCard = ({ topping, className, ...props }: ToppingCardProps) 
       variant="paragraph16-regular"
       children={`${topping.cost} ₽`}
     />
-  </div>
+  </li>
 );

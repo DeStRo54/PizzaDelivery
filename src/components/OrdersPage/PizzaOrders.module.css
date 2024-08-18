@@ -1,0 +1,53 @@
+.layout {
+    width: 100%;
+}
+
+.header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 24px;
+    margin: 24px 0;
+
+    p {
+        width: 100%;
+        color: var(--text-tertiary-color);
+    }
+}
+
+.status {
+    max-width: 220px;
+}
+
+.adress {
+    max-width: 300px;
+}
+
+.compound {
+    max-width: 160px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.order {
+    display: flex;
+    flex-direction: row;
+    padding-top: 24px;
+    border-top: 2px solid var(--border-extra-light);
+    gap: 24px;
+
+    p {
+        width: 100%;
+    }
+
+    button {
+        margin-top: 4px;
+        height: 18px;
+        width: auto;
+        border-bottom: 1px solid var(--quartenery-color);
+    }
+}

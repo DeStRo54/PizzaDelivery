@@ -23,5 +23,5 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["*.js", "**/*.ts", "**/*.tsx"]
+  "include": ["*.js", "**/*.ts", "**/*.tsx", "src/components/PersonPage/hooks/usePersonView.ts"]
 }

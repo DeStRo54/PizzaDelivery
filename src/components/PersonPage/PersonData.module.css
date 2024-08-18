@@ -11,18 +11,10 @@
     gap: 24px;
 }
 
-.title {
-    font-size: 28px;
-}
-
 .footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-
-.link-cancel {
-    color: var(--secondary-color-size);
 }
 
 .button {

@@ -1,15 +1,10 @@
 .layout {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   width: 100%;
+  max-width: 960px;
   margin: 0 auto;
-  z-index: 1;
 }
 
 .container {
-  display: flex;
-  margin-top: 100px;
-  width: 960px;
+  margin-top: 110px;
+  width: 100%;
 }

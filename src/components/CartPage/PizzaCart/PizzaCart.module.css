@@ -6,8 +6,13 @@
     width: 100%;
 }
 
-.title {
-    font-size: 28px;
+.empty-cart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 48px;
+    gap: 16px;
 }
 
 .container {
@@ -16,7 +21,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    margin-top: 48px;
+    margin: 48px 0 0;
 }
 
 .footer {

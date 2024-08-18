@@ -1,58 +1,45 @@
-import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { Button } from '../../../shared/Button/Button';
 import { Typhography } from '../../../shared/Typhography/Typhography';
 import { getTotalPrice } from '../../../utils/helpers/PriceCalculator/';
-import { PizzaContext } from '../../PizzaOutlet/PizzaOutlet';
+import { usePaymentStore } from '../../../utils/stores/PaymentStore';
+import { SetUniqPizzas } from '../helpers/SetUniqPizzas';
 import { PizzaCartElement } from '../PizzaCartElement/PizzaCartElement';
 import styles from './PizzaCart.module.css';
 
 export const PizzaCart = () => {
-  const cartPizzas = useContext(PizzaContext);
-
-  interface UniqData {
-    count: number;
-    value: PizzaCardChecked;
-  }
-
-  const createUniqData = (data: PizzaCardChecked[]) => {
-    const uniqData: UniqData[] = [];
-    const uniqList = [...new Set(data.map((item: PizzaCardChecked) => JSON.stringify(item)))].sort();
-
-    for (const elem of uniqList) {
-      uniqData.push({
-        count: data.filter((item: PizzaCardChecked) => JSON.stringify(item) === elem).length,
-        value: JSON.parse(elem)
-      });
-    }
-    return uniqData;
-  };
-
-  const uniqData = createUniqData(cartPizzas.pizzas);
-
-  console.log(cartPizzas.pizzas);
+  const { pizzas } = usePaymentStore();
+  const navigate = useNavigate();
 
   return (
     <div className={styles.layout}>
-      <Typhography tag="h2" variant="title" children="Корзина" className={styles['title']} />
-      {uniqData.length > 0 && (
+      <Typhography tag="h2" variant="title-form" children="Корзина" />
+      {pizzas.length > 0 ? (
         <>
-          <div className={styles.container}>
-            {uniqData.map((data, index) => (
+          <ul className={styles.container}>
+            {SetUniqPizzas(pizzas).map((data, index) => (
               <PizzaCartElement key={index} pizza={data.value} count={data.count} />
             ))}
-          </div>
+          </ul>
           <div className={styles.footer}>
             <div className={styles['footer-container']}>
               <Typhography tag="h2" variant="title-form" children={'Стоимость заказа: '} />
-              <Typhography tag="h2" variant="title-form" children={`${getTotalPrice(cartPizzas.pizzas)} ₽`} />
+              <Typhography tag="h2" variant="title-form" children={`${getTotalPrice(pizzas)} ₽`} />
             </div>
-            <Link to="/cart/person">
-              <Button variant="accept" children="Оформить заказ" className={styles.pay} />
-            </Link>
+            <Button
+              variant="accept"
+              onClick={() => navigate('/cart/person')}
+              children="Оформить заказ"
+              className={styles.pay}
+            />
           </div>
         </>
+      ) : (
+        <div className={styles['empty-cart']}>
+          <Typhography tag="h2" variant="title" children="Корзина пуста!" />
+          <Button variant="accept" onClick={() => navigate('/')} children="Перейти в каталог" />
+        </div>
       )}
     </div>
   );

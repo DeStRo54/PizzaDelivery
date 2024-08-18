@@ -1,17 +1,22 @@
-import { Link } from 'react-router-dom';
+import { Controller } from 'react-hook-form';
+import { PatternFormat } from 'react-number-format';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 import { Button } from '../../shared/Button/Button';
 import { Input } from '../../shared/Input/Input';
 import { Typhography } from '../../shared/Typhography/Typhography';
-import { useSetPersonData } from './hooks/useSetPersonData';
+import { usePaymentStore } from '../../utils/stores/PaymentStore/index.ts';
+import { usePersonView } from './hooks/usePersonView.ts';
 import styles from './PersonData.module.css';
 
 export const PersonData = () => {
-  const { form, functions } = useSetPersonData();
+  const { form, functions } = usePersonView();
+  const { pizzas } = usePaymentStore();
+  const navigate = useNavigate();
 
   return (
     <div className={styles.layout}>
-      <Typhography tag="h2" variant="title" children="Введите ваши данные" className={styles.title} />
+      <Typhography tag="h2" variant="title-form" children="Введите ваши данные" />
 
       <form className={styles.container} onSubmit={functions.onSubmit}>
         <Input
@@ -39,13 +44,22 @@ export const PersonData = () => {
           })}
         />
 
-        <Input
-          label="Телефон*"
-          placeholder="Телефон"
-          {...form.register('phone')}
-          {...(form.formState.errors.phone && { error: form.formState.errors.phone.message })}
+        <Controller
+          control={form.control}
+          name="phone"
+          render={({ field: { onChange, value = '', ...field }, fieldState }) => (
+            <Input
+              {...field}
+              label="Телефон*"
+              placeholder="Телефон"
+              component={PatternFormat}
+              format="+7 (###) ### ## ##"
+              value={value.substring(1)}
+              onChange={(e) => onChange(e.target.value.replace('+7', '8').replace(/ /g, '').replace(/\(|\)/g, ''))}
+              {...(fieldState.error && { error: fieldState.error.message })}
+            />
+          )}
         />
-
         <Input
           label="E-mail*"
           placeholder="E-mail"
@@ -61,14 +75,11 @@ export const PersonData = () => {
         />
 
         <div className={styles.footer}>
-          <Link to="/cart" className={styles['link-cancel']}>
-            <Button variant="cancel" children="Назад" className={styles.button} />
-          </Link>
-          <Link to="/cart/payment">
-            <Button type="submit" variant="accept" children="Продолжить" className={styles.button} />
-          </Link>
+          <Button variant="cancel" onClick={() => navigate('/cart')} children="Назад" className={styles.button} />
+          <Button variant="accept" children="Продолжить" className={styles.button} />
         </div>
       </form>
+      {pizzas.length === 0 && <Navigate to="/cart" />}
     </div>
   );
 };
