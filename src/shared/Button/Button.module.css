@@ -36,12 +36,11 @@
 }
 
 .button-transparent {
-  text-decoration: underline;
   font-size: var(--secondary-text-size);
   color: var(--quartenery-color);
   border: none;
+  border-radius: 0;
   padding: 0;
-  height: auto;
 }
 
 .cancel {
@@ -54,8 +53,7 @@
   }
 
   &:focus {
-    border-color: var(--accept-button-color);
-    border-color: #FDAB76;
+    border-color: var(--border-light-color);
   }
 
   &:disabled {

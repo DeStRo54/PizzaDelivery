@@ -7,8 +7,8 @@ import { Button } from '../../../shared/Button/Button';
 import { Input } from '../../../shared/Input/Input';
 import { Typhography } from '../../../shared/Typhography/Typhography';
 import { getTotalPrice } from '../../../utils/helpers/PriceCalculator';
-import { SetUniqPizzas } from '../../../utils/helpers/SetUniqPizzas';
 import { usePaymentStore } from '../../../utils/stores/PaymentStore';
+import { SetUniqPizzas } from '../../CartPage/helpers/SetUniqPizzas';
 import { CloseIcon } from '../../icons';
 import { SuccessIcon } from '../../icons/SuccessIcon';
 import { usePaymentView } from '../hooks/usePaymentView';
@@ -100,17 +100,17 @@ export const Payment = () => {
               <Typhography tag="h2" variant="title" children="Оплата прошла успешно!" className={styles.title} />
               <ul className={styles['success-data']}>
                 <li className={styles['success-data-item']}>
-                  <Typhography tag="p" variant="paragraph12-regular" children="Заказ" />
+                  <Typhography tag="p" variant="paragraph14-regular" children="Заказ" />
                   {uniqPizzas.map((data, index) => (
                     <OrderElement key={index} pizza={data} />
                   ))}
                 </li>
                 <li className={styles['success-data-item']}>
-                  <Typhography tag="p" variant="paragraph12-regular" children="Адрес доставки" />
+                  <Typhography tag="p" variant="paragraph14-regular" children="Адрес доставки" />
                   <Typhography tag="p" variant="paragraph16-regular" children={`Россия, ${deliveryInfo.adress}`} />
                 </li>
                 <li className={styles['success-data-item']}>
-                  <Typhography tag="p" variant="paragraph12-regular" children="Сумма заказа" />
+                  <Typhography tag="p" variant="paragraph14-regular" children="Сумма заказа" />
                   <Typhography tag="p" variant="paragraph16-regular" children={`${getTotalPrice(pizzas)}₽`} />
                 </li>
                 <li className={clsx(styles['success-data-item'], styles.sms)}>

@@ -6,7 +6,13 @@ export const PizzaCatalog = lazy(() =>
 );
 export const Profile = lazy(() => import('../../Profile/Profile').then((module) => ({ default: module.Profile })));
 
-export const Orders = lazy(() => import('../../OrdersPage/OrdersCatalog/Orders.tsx').then((module) => ({ default: module.Orders })));
+export const PizzaOrders = lazy(() =>
+  import('../../OrdersPage/PizzaOrders.tsx').then((module) => ({ default: module.PizzaOrders }))
+);
+
+export const CurrentOrder = lazy(() =>
+  import('../../CurrentOrderPage/CurrentOrder.tsx').then((module) => ({ default: module.PizzaOrder }))
+);
 
 export const PizzaCart = lazy(() =>
   import('../../CartPage/PizzaCart/PizzaCart').then((module) => ({ default: module.PizzaCart }))

@@ -1,7 +1,7 @@
 import { api } from '../../../instance';
 
-export type UserSessionParams = AxiosRequestConfig;
+export type GetUserSessionConfig = AxiosRequestConfig;
 
-export const getUserSession = async (requestConfig?: UserSessionParams) => {
+export const getUserSession = async (requestConfig?: GetUserSessionConfig) => {
   return api.get<SessionResponse>('/users/session', requestConfig?.config);
 };

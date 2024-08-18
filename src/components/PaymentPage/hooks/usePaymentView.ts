@@ -47,7 +47,6 @@ export const usePaymentView = () => {
   const closeSuccess = () => {
     usePaymentStore.setState({
       debitCard: {} as CreatePizzaPaymentDebitCardDto,
-      deliveryInfo: {} as Person,
       pizzas: [] as PizzaCardChecked[]
     });
   };

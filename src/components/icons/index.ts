@@ -6,3 +6,5 @@ export * from './TimeIcon';
 export * from './CloseIcon/CloseIcon.tsx';
 export * from './PlusIcon/PlusIcon.tsx';
 export * from './MinusIcon/MinusIcon.tsx';
+export * from './CircleIcon.tsx';
+export * from './QuestionIcon.tsx';

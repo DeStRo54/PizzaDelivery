@@ -1,8 +1,9 @@
 import { useMutation } from '@tanstack/react-query';
 
-import { postSignIn, SignInParams } from '../requests/users/signin';
+import { postSignIn, PostSignInConfig } from '../requests/users/signin';
 
 export const usePostSignInMutation = () =>
   useMutation({
-    mutationFn: async ({ params, config }: SignInParams) => await postSignIn({ params, config })
+    mutationKey: ['signin'],
+    mutationFn: async ({ params, config }: PostSignInConfig) => await postSignIn({ params, config })
   });

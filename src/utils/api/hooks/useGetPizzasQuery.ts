@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { getPizzas } from '../requests/pizza/catalog';
+import { getPizzasCatalog } from '../requests/pizza/catalog';
 
 export const useGetPizzasQuery = () =>
   useQuery({
     queryKey: ['getPizzas'],
-    queryFn: () => getPizzas(),
+    queryFn: () => getPizzasCatalog(),
     refetchOnWindowFocus: false //during development!!!
   });

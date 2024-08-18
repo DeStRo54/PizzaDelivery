@@ -1,7 +1,17 @@
 import { Suspense } from 'react';
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
 
-import { Layout, Orders, Payment, PersonData, PizzaAuth, PizzaCart, PizzaCatalog, Profile } from './constants';
+import {
+  CurrentOrder,
+  Layout,
+  Payment,
+  PersonData,
+  PizzaAuth,
+  PizzaCart,
+  PizzaCatalog,
+  PizzaOrders,
+  Profile
+} from './constants';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -26,7 +36,15 @@ const router = createBrowserRouter(
         path="/orders"
         element={
           <Suspense fallback={<div>Загрузка...</div>}>
-            <Orders />
+            <PizzaOrders />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/orders/current"
+        element={
+          <Suspense>
+            <CurrentOrder />
           </Suspense>
         }
       />

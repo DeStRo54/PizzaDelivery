@@ -2,7 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
-import { usePatchProfileMutation } from '../../../utils/api/hooks/usePatchProfileMutation';
+import { useUpdateProfileMutation } from '../../../utils/api/hooks/useUpdateProfileMutation';
 import { useAuthStore } from '../../../utils/stores/AuthStore';
 import { usePaymentStore } from '../../../utils/stores/PaymentStore';
 import { UserSheme } from '../constants/ProfileSheme';
@@ -16,10 +16,10 @@ export const useProfileView = () => {
     resolver: zodResolver(UserSheme)
   });
 
-  const patchProfileMutation = usePatchProfileMutation();
+  const updateProfileMutation = useUpdateProfileMutation();
 
   const onSubmit = profileForm.handleSubmit(async (data) => {
-    const patchProfileMutationResponse = await patchProfileMutation.mutateAsync({
+    const updateProfileMutationResponse = await updateProfileMutation.mutateAsync({
       params: {
         profile: {
           firstname: data.firstname,
@@ -32,8 +32,8 @@ export const useProfileView = () => {
       }
     });
 
-    if (patchProfileMutationResponse.data.reason) {
-      return profileForm.setError('phone', { message: patchProfileMutationResponse.data.reason });
+    if (updateProfileMutationResponse.data.reason) {
+      return profileForm.setError('phone', { message: updateProfileMutationResponse.data.reason });
     }
 
     setUser(data);

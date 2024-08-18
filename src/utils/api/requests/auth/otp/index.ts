@@ -1,6 +1,6 @@
 import { api } from '../../../instance';
 
 export type PostOtpParams = CreateOtpDto;
-export type OtpParams = AxiosRequestConfig<PostOtpParams>;
+export type PostOtpConfig = AxiosRequestConfig<PostOtpParams>;
 
-export const postOtp = async ({ params, config }: OtpParams) => api.post<OtpResponse>('/auth/otp', params, config);
+export const postOtp = async ({ params, config }: PostOtpConfig) => api.post<OtpResponse>('/auth/otp', params, config);
