@@ -3,11 +3,11 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 
 import { usePostPaymentMutation } from '../../../utils/api/hooks/usePostPaymentMutation';
-import { usePaymentStore } from '../../../utils/stores/PaymentStore';
+import { useAppStore } from '../../../utils/store';
 import { PaymentSheme } from '../constants/PaymentSheme';
 
 export const usePaymentView = () => {
-  const { pizzas, debitCard, deliveryInfo } = usePaymentStore();
+  const { pizzas, debitCard, deliveryInfo } = useAppStore();
   const postPaymentMutation = usePostPaymentMutation();
   const receiverAdress = deliveryInfo.adress?.split(', ');
   const [stage, setStage] = React.useState('');
@@ -35,7 +35,7 @@ export const usePaymentView = () => {
           lastname: deliveryInfo.lastname ?? '',
           middlename: deliveryInfo.middlename ?? '',
           phone: deliveryInfo.phone
-        }, //возможжно надо будет поправить
+        },
         debitCard: data,
         pizzas: pizzas //возможжно надо будет поправить
       }
@@ -45,7 +45,7 @@ export const usePaymentView = () => {
   });
 
   const closeSuccess = () => {
-    usePaymentStore.setState({
+    useAppStore.setState({
       debitCard: {} as CreatePizzaPaymentDebitCardDto,
       pizzas: [] as PizzaCardChecked[]
     });

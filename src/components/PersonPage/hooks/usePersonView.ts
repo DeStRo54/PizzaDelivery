@@ -2,11 +2,11 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
-import { usePaymentStore } from '../../../utils/stores/PaymentStore';
+import { useAppStore } from '../../../utils/store';
 import { PersonSheme } from '../constants/PersonSheme';
 
 export const usePersonView = () => {
-  const { deliveryInfo, addDeliveryInfo } = usePaymentStore();
+  const { deliveryInfo, addDeliveryInfo } = useAppStore();
   const navigate = useNavigate();
   const personForm = useForm<PersonSheme>({
     defaultValues: { ...deliveryInfo, phone: deliveryInfo.phone ?? '' },

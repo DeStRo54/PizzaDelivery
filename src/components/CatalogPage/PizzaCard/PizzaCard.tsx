@@ -6,7 +6,7 @@ import { Tabs } from '../../../shared/RadioSlider/RadioSlider';
 import { RemouteIng } from '../../../shared/RemouteImg/RemouteImg';
 import { Typhography } from '../../../shared/Typhography/Typhography';
 import { PizzaDoughs, PizzaSizes } from '../../../utils/helpers/Translater';
-import { usePaymentStore } from '../../../utils/stores/PaymentStore/index.ts';
+import { useAppStore } from '../../../utils/store';
 import { CloseIcon } from '../../icons';
 import { ToppingCard } from '../ToppingCard/ToppingCard';
 import styles from './PizzaCard.module.css';
@@ -22,7 +22,7 @@ export const PizzaCard = ({ pizza, onClose }: PizzaCardProps) => {
   const [currentPizzaDough, setCurrentPizzaDough] = React.useState(pizza.doughs[0]);
   const [currentToppings, setCurrentToppings] = React.useState([] as PizzaIngredient[]);
 
-  const { addPizza } = usePaymentStore();
+  const { addPizza } = useAppStore();
 
   const PizzaToCart = {
     id: pizza.id,

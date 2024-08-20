@@ -5,12 +5,12 @@ import { StatusView } from '../../shared/StatusView/StatusView';
 import { Typhography } from '../../shared/Typhography/Typhography';
 import { useGetPizzaOrdersQuery } from '../../utils/api/hooks/useGetPizzaOrdersQuery';
 import { AdressStructToString } from '../../utils/helpers/AdressStructToString';
-import { useAuthStore } from '../../utils/stores/AuthStore';
+import { useAppStore } from '../../utils/store';
 import styles from './PizzaOrders.module.css';
 
 export const PizzaOrders = () => {
   const { data, isLoading } = useGetPizzaOrdersQuery();
-  const { setOrderId } = useAuthStore();
+  const { setOrderId } = useAppStore();
   const navigate = useNavigate();
 
   const getOrder = (orderId: string) => {

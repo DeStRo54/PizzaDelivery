@@ -5,13 +5,13 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import { Button } from '../../shared/Button/Button';
 import { Input } from '../../shared/Input/Input';
 import { Typhography } from '../../shared/Typhography/Typhography';
-import { usePaymentStore } from '../../utils/stores/PaymentStore/index.ts';
+import { useAppStore } from '../../utils/store/index.ts';
 import { usePersonView } from './hooks/usePersonView.ts';
 import styles from './PersonData.module.css';
 
 export const PersonData = () => {
   const { form, functions } = usePersonView();
-  const { pizzas } = usePaymentStore();
+  const { pizzas } = useAppStore();
   const navigate = useNavigate();
 
   return (

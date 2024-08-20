@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
 import { getUserSession } from './utils/api/requests/users/session';
 import { LOCALE_STORAGE_KEYS } from './utils/constants/localeStorageKeys.ts';
-import { useAuthStore } from './utils/stores/AuthStore/index.ts';
+import { useAppStore } from './utils/store/index.ts';
 
 const init = async () => {
   const queryClient = new QueryClient();
@@ -15,7 +15,11 @@ const init = async () => {
 
   if (token) {
     const getUserSessionRespone = await getUserSession();
-    useAuthStore.setState({ isLoggedIn: true, user: getUserSessionRespone.data.user });
+    useAppStore.setState({
+      isLoggedIn: true, user: getUserSessionRespone.data.user, deliveryInfo:
+        { ...(getUserSessionRespone.data.user as Person), adress: getUserSessionRespone.data.user.city as string }
+    });
+
   }
 
   ReactDOM.createRoot(document.getElementById('root')!).render(

@@ -3,12 +3,11 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
 import { useUpdateProfileMutation } from '../../../utils/api/hooks/useUpdateProfileMutation';
-import { useAuthStore } from '../../../utils/stores/AuthStore';
-import { usePaymentStore } from '../../../utils/stores/PaymentStore';
+import { useAppStore } from '../../../utils/store';
 import { UserSheme } from '../constants/ProfileSheme';
 
 export const useProfileView = () => {
-  const { user, setUser } = useAuthStore();
+  const { user, setUser } = useAppStore();
   const navigate = useNavigate();
 
   const profileForm = useForm<UserSheme>({
@@ -37,7 +36,7 @@ export const useProfileView = () => {
     }
 
     setUser(data);
-    usePaymentStore.setState({ deliveryInfo: { ...data, adress: data.city } });
+    useAppStore.setState({ deliveryInfo: { ...data, adress: data.city } });
     navigate('/');
   });
 

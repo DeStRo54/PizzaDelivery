@@ -1,12 +1,12 @@
 import { Outlet } from 'react-router-dom';
 
-import { useAuthStore } from '../../utils/stores/AuthStore';
+import { useAppStore } from '../../utils/store';
 import { Header } from '../Header/Header';
 import styles from './Layout.module.css';
 import { LogOutView } from './LogOutView/LogOutView';
 
 export const Layout = () => {
-  const { logOut } = useAuthStore();
+  const { logOut } = useAppStore();
 
   document.body.style.overflowY = logOut ? 'hidden' : 'auto';
 

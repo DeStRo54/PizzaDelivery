@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { usePostOtpMutation } from '../../../utils/api/hooks/usePostOtpMutation';
 import { usePostSignInMutation } from '../../../utils/api/hooks/usePostSignInMutation';
 import { LOCALE_STORAGE_KEYS } from '../../../utils/constants';
-import { useAuthStore } from '../../../utils/stores/AuthStore';
+import { useAppStore } from '../../../utils/store';
 import { OtpSheme } from '../constants/OtpShema';
 import { PhoneSheme } from '../constants/PhoneShema';
 
@@ -66,7 +66,7 @@ export const useAuthView = () => {
       }
 
       localStorage.setItem(LOCALE_STORAGE_KEYS.TOKEN, postSignInMutationResponse.data.token);
-      useAuthStore.setState({ isLoggedIn: true, user: postSignInMutationResponse.data.user });
+      useAppStore.setState({ isLoggedIn: true, user: postSignInMutationResponse.data.user });
       navigate('/');
     }
   });

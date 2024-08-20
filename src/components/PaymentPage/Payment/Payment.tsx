@@ -7,7 +7,7 @@ import { Button } from '../../../shared/Button/Button';
 import { Input } from '../../../shared/Input/Input';
 import { Typhography } from '../../../shared/Typhography/Typhography';
 import { getTotalPrice } from '../../../utils/helpers/PriceCalculator';
-import { usePaymentStore } from '../../../utils/stores/PaymentStore';
+import { useAppStore } from '../../../utils/store';
 import { SetUniqPizzas } from '../../CartPage/helpers/SetUniqPizzas';
 import { CloseIcon } from '../../icons';
 import { SuccessIcon } from '../../icons/SuccessIcon';
@@ -16,7 +16,7 @@ import { OrderElement } from '../OrderElement/OrderElement';
 import styles from './Payment.module.css';
 
 export const Payment = () => {
-  const { pizzas, deliveryInfo } = usePaymentStore();
+  const { pizzas, deliveryInfo } = useAppStore();
   const { form, state, functions } = usePaymentView();
   const uniqPizzas = SetUniqPizzas(pizzas);
   const navigate = useNavigate();

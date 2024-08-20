@@ -4,13 +4,13 @@ import { Button } from '../../shared/Button/Button';
 import { StatusView, StatusViewVariant } from '../../shared/StatusView/StatusView';
 import { Typhography } from '../../shared/Typhography/Typhography';
 import { useGetPizzaOrderByIdQuery } from '../../utils/api/hooks/useGetPizzaOrderByIdQuery';
-import { useAuthStore } from '../../utils/stores/AuthStore';
+import { useAppStore } from '../../utils/store';
 import { CloseIcon, QuestionIcon } from '../icons';
 import styles from './CurrentOrder.module.css';
 import { useCancelOrder } from './hooks/useCancelOrder';
 
 export const PizzaOrder = () => {
-  const { orderId } = useAuthStore();
+  const { orderId } = useAppStore();
   const { data, isFetching, isSuccess } = useGetPizzaOrderByIdQuery({ params: { id: orderId } });
   const { isActive, functions } = useCancelOrder(orderId);
 
@@ -50,7 +50,7 @@ export const PizzaOrder = () => {
                 <div className={styles['attention-container']}>
                   <div className={styles['attention-msg']}>
                     <QuestionIcon />
-                    <Typhography tag="h3" variant="title" children='Отменить заказ?' />
+                    <Typhography tag="h3" variant="title" children="Отменить заказ?" />
                   </div>
                   <div className={styles['button-container']}>
                     <Button onClick={functions.cancelOrder} children="Отменить" variant="cancel" />
