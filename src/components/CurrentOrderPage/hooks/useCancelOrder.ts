@@ -36,7 +36,7 @@ export const useCancelOrder = (orderId: string) => {
     functions: {
       backToOrders,
       viewCancelAttention,
-      cancelOrder,
+      cancelOrder
     }
   };
 };

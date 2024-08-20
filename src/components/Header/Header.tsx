@@ -1,16 +1,16 @@
 import { Link, useNavigate } from 'react-router-dom';
 
-import { useAuthStore } from '../../utils/stores/AuthStore';
+import { useAppStore } from '../../utils/store';
 import { ExitIcon, GroupIcon, LogoIcon, TimeIcon, UserIcon } from '../icons';
 import { auth, cart, catalog, orders, profile } from './constants';
 import styles from './Header.module.css';
 
 export const Header = () => {
-  const { isLoggedIn } = useAuthStore();
+  const { isLoggedIn } = useAppStore();
   const navigate = useNavigate();
 
   const setAuthStatus = () => {
-    if (isLoggedIn) useAuthStore.setState({ logOut: true });
+    if (isLoggedIn) useAppStore.setState({ logOut: true });
     else {
       navigate(auth);
     }

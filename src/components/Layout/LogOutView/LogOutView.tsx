@@ -3,12 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '../../../shared/Button/Button';
 import { Typhography } from '../../../shared/Typhography/Typhography';
 import { LOCALE_STORAGE_KEYS } from '../../../utils/constants';
-import { useAuthStore } from '../../../utils/stores/AuthStore';
+import { useAppStore } from '../../../utils/store';
 import { CloseIcon } from '../../icons';
 import styles from './LogOutView.module.css';
 
 export const LogOutView = () => {
-  const { setLogOut, setIsLoggedIn, setUser } = useAuthStore();
+  const { setLogOut, setIsLoggedIn, setUser } = useAppStore();
   const navigate = useNavigate();
   const exitClick = () => {
     // navigate('/');

@@ -3,13 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '../../../shared/Button/Button';
 import { Typhography } from '../../../shared/Typhography/Typhography';
 import { getTotalPrice } from '../../../utils/helpers/PriceCalculator/';
-import { usePaymentStore } from '../../../utils/stores/PaymentStore';
+import { useAppStore } from '../../../utils/store';
 import { SetUniqPizzas } from '../helpers/SetUniqPizzas';
 import { PizzaCartElement } from '../PizzaCartElement/PizzaCartElement';
 import styles from './PizzaCart.module.css';
 
 export const PizzaCart = () => {
-  const { pizzas } = usePaymentStore();
+  const { pizzas } = useAppStore();
   const navigate = useNavigate();
 
   return (
